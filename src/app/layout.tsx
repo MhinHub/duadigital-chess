@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Merriweather } from "next/font/google";
 import "./globals.css";
 
@@ -13,6 +13,42 @@ export const metadata: Metadata = {
     template: "%s | SCC Grand Prix Blitz",
   },
   description: "A simple web app to visualize the most common chess openings.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    title: "SCC Grand Prix Blitz",
+    statusBarStyle: "black-translucent",
+  },
+  applicationName: "SCC Grand Prix Blitz",
+  keywords: ["chess", "opening", "visualization", "grand prix", "blitz"],
+  icons: [
+    {
+      rel: "icon",
+      sizes: "32x32",
+      url: "/favicon-32x32.png",
+      type: "image/png",
+    },
+    {
+      rel: "icon",
+      sizes: "16x16",
+      url: "/favicon-16x16.png",
+      type: "image/png",
+    },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      url: "/apple-touch-icon.png",
+    },
+    {
+      rel: "mask-icon",
+      color: "#f83813",
+      url: "/safari-pinned-tab.svg",
+    },
+  ],
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f83813",
+  userScalable: false,
 };
 
 export default function RootLayout({
