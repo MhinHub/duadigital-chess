@@ -1,8 +1,9 @@
 "use client";
 
 import { useChessStore } from "@/store/zustand";
-import { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { useEffect, useState, useRef } from "react";
+import { Bar, getElementAtEvent } from "react-chartjs-2";
+import { useRouter } from "next/navigation";
 
 async function getData() {
   const response = await fetch(
@@ -13,6 +14,9 @@ async function getData() {
 }
 
 export default function Opening() {
+  const chartRef = useRef();
+  const router = useRouter();
+
   const { data, setData, topOpenings, setTopOpenings } = useChessStore();
 
   const [openingsFreq, setOpeningsFreq] = useState<any>();
@@ -73,12 +77,6 @@ export default function Opening() {
     return openingName;
   };
 
-  console.log(
-    topOpenings?.map((opening: any) =>
-      getECOTagFromURL(opening.eco).split(" ").slice(0, 2)
-    )
-  );
-
   return (
     <main className="min-h-screen flex flex-col p-6 bg-[#FFE804] relative text-[#2533EE] md:px-32">
       <div className="flex flex-col gap-2">
@@ -91,6 +89,14 @@ export default function Opening() {
       </div>
       <p>{data && data.games.length}</p>
       <Bar
+        ref={chartRef}
+        onClick={(e) =>
+          router.push(
+            `/opening/${
+              getElementAtEvent(chartRef?.current as any, e)[0].index
+            }`
+          )
+        }
         data={{
           labels: topOpenings?.map((opening: any) =>
             getECOTagFromURL(opening.eco).split(" ").slice(0, 2)
