@@ -1,6 +1,7 @@
 {
     "name": "SCC Grand Prix Blitz",
     "short_name": "SCC Grand Prix Blitz",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
