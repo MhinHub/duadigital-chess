@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+<img src="public/android-chrome-192x192.png" alt="logo" width="200" height="auto" />
+  <h1>SCC Grand Prix Blitz</h1>
+  <p>Chess Opening Visualization</p>
+</div>
+<br/>
 
-## Getting Started
+## Project Overview
+This project is a simple web app to visualize the most common chess openings. The data is fetched from [Chess.com](https://www.chess.com/) API.
 
-First, run the development server:
+I create this project to following technical test from [DuaDigital](https://duadigital.com/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Requirements
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Chart Component:
+- Implementation: Utilize Chart.js for dynamic and interactive charts.
+- Functionality: Implement a click feature on the chart to dynamically display various datasets.
+- Responsiveness: Ensure the chart adjusts seamlessly across different devices.
+- Openings Screen:
+    - Display a bar chart representing the five most popular chess openings, identified by their ECO (Encyclopedia of Chess Openings) codes.
+    - Example: For an ECO tag like "https://www.chess.com/openings/English-Opening-Anglo-Indian-Kings-Knight-Variation", the opening to display is "English Opening." Variations are not required for this project.
+- Interaction:
+    - Clicking on an opening redirects users to a results screen.
+    - On this screen, a pie chart shows the distribution of outcomes (win for white, win for black, draw) specific to the selected opening.
+    - The subtitle on the result screen dynamically updates to reflect the chosen opening.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Project Techstack:
+- Next.js (App Router, TypeScript)
+- Tailwind CSS
+- Chart.js (React Chart 2)
+- Zustand
+- PWA
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
