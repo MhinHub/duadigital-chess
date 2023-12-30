@@ -4,6 +4,8 @@ import { useChessStore } from "@/store/zustand";
 import { useEffect, useState, useRef } from "react";
 import { Bar, getElementAtEvent } from "react-chartjs-2";
 import { useRouter } from "next/navigation";
+import { getECOTagFromURL } from "@/utils";
+import Footer from "./_components/Footer";
 
 async function getData() {
   const response = await fetch(
@@ -69,14 +71,6 @@ export default function Opening() {
     }
   }, [data, setTopOpenings]);
 
-  const getECOTagFromURL = (url: string) => {
-    const urlParts = url.split("/");
-    const lastPart = urlParts[urlParts.length - 1];
-    const openingParts = lastPart.split("-");
-    const openingName = openingParts.slice(0, 2).join(" ");
-    return openingName;
-  };
-
   return (
     <main className="min-h-screen flex flex-col p-6 bg-[#FFE804] relative text-[#2533EE] md:px-32">
       <div className="flex flex-col gap-2">
@@ -87,7 +81,6 @@ export default function Opening() {
           on a opening to see the result.
         </p>
       </div>
-      <p>{data && data.games.length}</p>
       <Bar
         ref={chartRef}
         onClick={(e) =>
@@ -141,16 +134,7 @@ export default function Opening() {
           },
         }}
       />
-      <span className="text-xs font-light bottom-6 py-6 flex mx-auto mt-auto">
-        data from &nbsp;
-        <a
-          href="https://www.chess.com"
-          target="_blank"
-          className="font-bold hover:underline"
-        >
-          chess.com
-        </a>
-      </span>
+      <Footer />
     </main>
   );
 }

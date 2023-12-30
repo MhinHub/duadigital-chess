@@ -9,17 +9,27 @@ import {
   LinearScale,
   BarElement,
 } from "chart.js";
+// import { Metadata } from "next";
 
-Chart.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+// export const metadata: Metadata = {
+//   title: "Openings",
+//   description:
+//     "A graphical representation of the five most common blitz openings. Tap on a opening to see the result.",
+// };
+
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  ArcElement,
+  BarElement,
+  Tooltip,
+  Legend
+);
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }
